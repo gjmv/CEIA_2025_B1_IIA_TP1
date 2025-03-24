@@ -1,5 +1,5 @@
 import pygame
-from constants import *
+from .constants import *
 
 
 def draw_pegs(display: pygame.display, color=(130, 130, 130)):

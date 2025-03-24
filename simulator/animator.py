@@ -1,5 +1,5 @@
-import logic
-from constants import *
+from . import logic
+from .constants import *
 
 
 class Animator:

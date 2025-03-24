@@ -3,12 +3,12 @@ import pygame
 import sys
 
 # Importing custom modules
-import animator
-import background
-import logic
-import sprites
-import synchronizer
-from constants import *
+from . import animator
+from . import background
+from . import logic
+from . import sprites
+from . import synchronizer
+from .constants import *
 
 
 # ----------------------------------------------
@@ -19,15 +19,6 @@ from constants import *
 def load_configuration(file_path):
     with open(file_path, "r") as json_file:
         return json.load(json_file)
-
-
-# Load initial and sequence states
-initial_state = load_configuration("./initial_state.json")
-sequence = load_configuration("./sequence.json")
-
-# These two variables are important for the animator and the sequencer
-number_of_disks = sprites.obtain_number_of_disks(initial_state)
-disk_height = sprites.obtain_disks_height(number_of_disks)
 
 
 # ----------------------------------------------
@@ -41,7 +32,11 @@ def initialize_pygame():
 
 
 # Main game loop
-def main():
+def main(initial_state, sequence):
+    # These two variables are important for the animator and the sequencer
+    number_of_disks = sprites.obtain_number_of_disks(initial_state)
+    disk_height = sprites.obtain_disks_height(number_of_disks)
+
     # Initialize Pygame
     screen = initialize_pygame()
     clock = pygame.time.Clock()
@@ -93,8 +88,3 @@ def handle_events():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-
-
-# -----------
-if __name__ == "__main__":
-    main()

@@ -3,8 +3,8 @@ import random
 
 import matplotlib.colors as mcolors
 
-import logic
-from constants import *
+from . import logic
+from .constants import *
 
 
 # List of colors for disks
